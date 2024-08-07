@@ -8,6 +8,13 @@
       "when": 1722588834238,
       "tag": "0000_panoramic_spitfire",
       "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "7",
+      "when": 1722926688179,
+      "tag": "0001_brainy_red_ghost",
+      "breakpoints": true
     }
   ]
 }
