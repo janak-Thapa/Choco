@@ -15,6 +15,20 @@
       "when": 1722926688179,
       "tag": "0001_brainy_red_ghost",
       "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "7",
+      "when": 1723360157779,
+      "tag": "0002_melted_vector",
+      "breakpoints": true
+    },
+    {
+      "idx": 3,
+      "version": "7",
+      "when": 1723360253582,
+      "tag": "0003_chemical_jazinda",
+      "breakpoints": true
     }
   ]
 }
