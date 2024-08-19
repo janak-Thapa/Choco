@@ -8,6 +8,7 @@ import { QueryProvider } from '@/providers/query-provider';
 
 import { getServerSession } from 'next-auth';
 import { authOptions } from '@/lib/auth/authOptions';
+import { Toaster } from '@/components/ui/toaster';
 
 
 const fontSans = FontSans({
@@ -38,6 +39,7 @@ export default async function RootLayout({
                   {children}
                   
                 </QueryProvider>
+                <Toaster/>
                 
             </body>
         </html>
