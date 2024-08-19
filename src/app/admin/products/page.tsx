@@ -14,7 +14,7 @@ const ProductsPage = () => {
   const { onOpen } = useNewProduct();
 
   // Fetching products data using react-query
-  const { data: products,isLoading } = useQuery<Product[]>({
+  const { data: products,isLoading,isError } = useQuery<Product[]>({
     queryKey: ['products'],
     queryFn: getAllproducts,
   });
@@ -26,6 +26,8 @@ const ProductsPage = () => {
         <Button size={'sm'} onClick={onOpen}>Add Product</Button>
         <ProductSheet />
       </div>
+
+      {isError && <span className='text-red-500'>Something went wrong!</span>}
 
       {isLoading ? (<div className='flex items-center justify-center'>
         <Loader2 className="size-10 animate-spin"/>
