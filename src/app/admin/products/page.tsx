@@ -1,14 +1,15 @@
 "use client"
 import { Button } from '@/components/ui/button'
 import React from 'react'
-import { DataTable } from './data-table'
+import { DataTable } from '../_components/data-table'
 import { columns } from './columns'
 import { useQuery } from '@tanstack/react-query'
 import { Product } from '@/types'
-import { getAllproducts } from '@/http/api'
+
 import ProductSheet from './product-sheet'
 import { useNewProduct } from '@/store/product/product-store'
 import { Loader2 } from 'lucide-react'
+import { getAllProducts } from '@/http/api'
 
 const ProductsPage = () => {
   const { onOpen } = useNewProduct();
@@ -16,7 +17,7 @@ const ProductsPage = () => {
   // Fetching products data using react-query
   const { data: products,isLoading,isError } = useQuery<Product[]>({
     queryKey: ['products'],
-    queryFn: getAllproducts,
+    queryFn: getAllProducts,
   });
 
   return (
