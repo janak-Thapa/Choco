@@ -43,6 +43,13 @@
       "when": 1723451677762,
       "tag": "0005_gorgeous_xorn",
       "breakpoints": true
+    },
+    {
+      "idx": 6,
+      "version": "7",
+      "when": 1725273425103,
+      "tag": "0006_wandering_lizard",
+      "breakpoints": true
     }
   ]
 }
