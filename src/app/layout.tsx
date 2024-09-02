@@ -9,6 +9,7 @@ import { QueryProvider } from '@/providers/query-provider';
 import { getServerSession } from 'next-auth';
 import { authOptions } from '@/lib/auth/authOptions';
 import { Toaster } from '@/components/ui/toaster';
+import AuthProvider from '@/providers/auth-provider';
 
 
 const fontSans = FontSans({
@@ -36,7 +37,10 @@ export default async function RootLayout({
                     fontSans.variable
                 )}>
                 <QueryProvider>
-                  {children}
+                    <AuthProvider session={session}>
+                    {children}
+                    </AuthProvider>
+                 
                   
                 </QueryProvider>
                 <Toaster/>

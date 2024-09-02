@@ -1,7 +1,7 @@
 "use client";
 import { getSingleProduct } from "@/http/api";
 import { useQuery } from "@tanstack/react-query";
-import { useParams } from "next/navigation";
+import { useParams, usePathname } from "next/navigation";
 import React from "react";
 import Header from "../../_components/Header";
 import Image from "next/image";
@@ -25,10 +25,15 @@ import { Textarea } from "@/components/ui/textarea";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
+import { useSession } from "next-auth/react";
+import path from "node:path/win32";
 
 const SingleProductPage = () => {
   const params = useParams();
+  const pathname = usePathname()
   const id = params.id;
+
+  const {data:session} = useSession()
 
   const form = useForm<z.infer<typeof orderSchema>>({
     resolver: zodResolver(orderSchema),
@@ -180,7 +185,11 @@ const SingleProductPage = () => {
                   <Separator className="my-6 bg-brown-900" />
                                     <div className="flex items-center justify-between">
                                         <span className="text-3xl font-semibold">$40</span>
-                                        <Button type="submit">Buy Now</Button>
+                                        {session ? (
+                                          <Button type="submit">Buy Now</Button>) : (<Link href={`/api/auth/signin?callbackUrl=${pathname}`}>
+                                          <Button >Buy Now</Button></Link>)
+                                        }
+                                        
                                       
                                         
                                     </div>
