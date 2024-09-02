@@ -26,7 +26,6 @@ import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import { useSession } from "next-auth/react";
-import path from "node:path/win32";
 
 const SingleProductPage = () => {
   const params = useParams();
@@ -45,14 +44,28 @@ const SingleProductPage = () => {
     },
   });
 
+ 
+
   type FormValues = z.infer<typeof orderSchema>;
 
-  const onsubmit = (values: FormValues) => {};
+  const qty = form.watch("qty")
 
   const { data: product, isLoading } = useQuery<Product>({
     queryKey: ["product", id],
     queryFn: () => getSingleProduct(id as string),
   });
+
+  const price = React.useMemo(()=>{
+    if(product?.price){
+      return product.price * qty
+    }
+    return 0
+
+  },[qty,product])
+
+  const onsubmit = (values: FormValues) => {};
+
+ 
   return (
     <>
       <Header />
@@ -184,7 +197,7 @@ const SingleProductPage = () => {
                   </div>
                   <Separator className="my-6 bg-brown-900" />
                                     <div className="flex items-center justify-between">
-                                        <span className="text-3xl font-semibold">$40</span>
+                                        <span className="text-3xl font-semibold">${price}</span>
                                         {session ? (
                                           <Button type="submit">Buy Now</Button>) : (<Link href={`/api/auth/signin?callbackUrl=${pathname}`}>
                                           <Button >Buy Now</Button></Link>)
