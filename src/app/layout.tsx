@@ -1,6 +1,6 @@
-
 import type { Metadata } from 'next';
 import { Inter as FontSans } from 'next/font/google';
+import Head from 'next/head';
 
 import './globals.css';
 import { cn } from '@/lib/utils';
@@ -10,7 +10,6 @@ import { getServerSession } from 'next-auth';
 import { authOptions } from '@/lib/auth/authOptions';
 import { Toaster } from '@/components/ui/toaster';
 import AuthProvider from '@/providers/auth-provider';
-
 
 const fontSans = FontSans({
     subsets: ['latin'],
@@ -36,15 +35,15 @@ export default async function RootLayout({
                     'min-h-screen bg-background font-sans antialiased',
                     fontSans.variable
                 )}>
+                <Head>
+                    <meta name="cryptomus" content="701fefba" />
+                </Head>
                 <QueryProvider>
                     <AuthProvider session={session}>
-                    {children}
+                        {children}
                     </AuthProvider>
-                 
-                  
                 </QueryProvider>
-                <Toaster/>
-                
+                <Toaster />
             </body>
         </html>
     );
