@@ -9,10 +9,14 @@ import Footer from './_components/Footer';
 import Products from './_components/Products';
 
 const HomePage = () => {
+    React.useEffect(() => {
+        console.log(document.head.innerHTML);
+    }, []);
+
     return (
         <>
             <Head>
-            <meta name="cryptomus" content="701fefba" />
+                <meta name="cryptomus" content="701fefba" />
             </Head>
             <Header />
             <Hero />
