@@ -12,7 +12,7 @@ const HomePage = () => {
     return (
         <>
             <Head>
-                <meta name="cryptomus" content="701fefba" />
+            <meta name="cryptomus" content="701fefba" />
             </Head>
             <Header />
             <Hero />
